@@ -18,7 +18,7 @@ jobs:
         
     - uses: hmanzur/actions-aws-eb@v1.0.0
       with:
-        command: 'eb init --platform "64bit Amazon Linux 2018.03 v2.16.0 running Docker 19.03.6-ce" --region eu-west-1 docker-react'
+        command: 'init --platform "64bit Amazon Linux 2018.03 v2.16.0 running Docker 19.03.6-ce" --region eu-west-1 docker-react'
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
