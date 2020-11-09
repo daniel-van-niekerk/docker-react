@@ -1,0 +1,17 @@
+name: Docker build and test
+on:
+  push:
+    branches:
+      - master
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build Docker Image and Test
+      run: |
+        docker build -t danielvanniekerk/docker-react -f Dockerfile.dev .
+        docker run -e CI=true danielvanniekerk/docker-react npm run test
