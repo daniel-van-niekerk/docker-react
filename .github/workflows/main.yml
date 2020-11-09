@@ -15,3 +15,13 @@ jobs:
       run: |
         docker build -t danielvanniekerk/docker-react -f Dockerfile.dev .
         docker run -e CI=true danielvanniekerk/docker-react npm run test
+        
+    - name: Elastic Beanstalk Deployment
+      uses: kumarshivam12/Aws-ElasticBeanstalk@v1.3
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        EB-BUCKET-NAME: elasticbeanstalk-eu-west-1-077630070512
+        APPLICATION-NAME: docker-react 
+        EB-ENV-NAME: DockerReact-env
+        AWS-REGION: eu-west-1
