@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Build Docker Image and Test
-      run: |
-        docker build -t danielvanniekerk/docker-react -f Dockerfile.dev .
-        docker run -e CI=true danielvanniekerk/docker-react npm run test
+#     - uses: actions/checkout@v1
+#     - name: Build Docker Image and Test
+#       run: |
+#         docker build -t danielvanniekerk/docker-react -f Dockerfile.dev .
+#         docker run -e CI=true danielvanniekerk/docker-react npm run test
         
     - uses: hmanzur/actions-aws-eb@v1.0.0
       with:
-        command: init docker-react --region eu-west-1 --platform '64bit Amazon Linux 2018.03 v2.16.0 running Docker 19.03.6-ce'
+        command: init docker-react --region eu-west-1 --platform 64bit Amazon Linux 2018.03 v2.16.0 running Docker 19.03.6-ce
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
